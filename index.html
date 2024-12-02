@@ -1,1 +1,315 @@
-Hello World
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Git & GitHub</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --bg-color: #f5f6fa;
+            --text-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .day-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .day-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .day-content {
+            display: none;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .day-content.active {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .resource-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: #ddd;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-bar-fill"></div>
+    </div>
+
+    <header>
+        <div class="header-bg">
+            <i class="fab fa-git fa-10x"></i>
+        </div>
+        <div class="header-content">
+            <h1>Formation Git & GitHub</h1>
+            <p>Formation complète sur 3 jours pour maîtriser Git et GitHub</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#jour1">Jour 1</a></li>
+            <li><a href="#jour2">Jour 2</a></li>
+            <li><a href="#jour3">Jour 3</a></li>
+            <li><a href="#resources">Ressources</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="jour1" class="day-section">
+            <div class="day-header">
+                <h2><i class="fas fa-code"></i> Jour 1 - Fondamentaux de Git</h2>
+            </div>
+            <div class="day-content">
+                <h3>Matin (9h-12h30)</h3>
+                <ul>
+                    <li>Introduction au contrôle de version</li>
+                    <li>Premiers pas avec Git</li>
+                    <li>Configuration de l'environnement</li>
+                </ul>
+                <h3>Après-midi (14h-17h30)</h3>
+                <ul>
+                    <li>Travaux pratiques</li>
+                    <li>Gestion des modifications</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="jour2" class="day-section">
+            <div class="day-header">
+                <h2><i class="fas fa-code-branch"></i> Jour 2 - Branches et GitHub</h2>
+            </div>
+            <div class="day-content">
+                <h3>Matin (9h-12h30)</h3>
+                <ul>
+                    <li>Travail avec les branches</li>
+                    <li>Introduction à GitHub</li>
+                </ul>
+                <h3>Après-midi (14h-17h30)</h3>
+                <ul>
+                    <li>Synchronisation Git/GitHub</li>
+                    <li>Travaux pratiques en binôme</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="jour3" class="day-section">
+            <div class="day-header">
+                <h2><i class="fas fa-users"></i> Jour 3 - Collaboration et Projet Final</h2>
+            </div>
+            <div class="day-content">
+                <h3>Matin (9h-12h30)</h3>
+                <ul>
+                    <li>Workflow collaboratif</li>
+                    <li>Travaux pratiques avancés</li>
+                </ul>
+                <h3>Après-midi (14h-17h30)</h3>
+                <ul>
+                    <li>Projet final en équipe</li>
+                    <li>Bilan et conclusion</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="resources" class="resources-grid">
+            <div class="resource-card">
+                <h3><i class="fas fa-book"></i> Supports de cours</h3>
+                <ul>
+                    <li>Diaporamas</li>
+                    <li>Fiches récapitulatives</li>
+                    <li>Guides pratiques</li>
+                </ul>
+            </div>
+            <div class="resource-card">
+                <h3><i class="fas fa-tools"></i> Outils recommandés</h3>
+                <ul>
+                    <li>GitKraken</li>
+                    <li>GitHub Desktop</li>
+                    <li>VS Code + extensions</li>
+                </ul>
+            </div>
+            <div class="resource-card">
+                <h3><i class="fas fa-graduation-cap"></i> Ressources d'apprentissage</h3>
+                <ul>
+                    <li>Git-it</li>
+                    <li>Learn Git Branching</li>
+                    <li>Documentation officielle</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Formation Git & GitHub - Tous droits réservés</p>
+    </footer>
+
+    <script>
+        // Gestion des sections dépliables
+        document.querySelectorAll('.day-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('active');
+            });
+        });
+
+        // Barre de progression
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar-fill').style.width = scrolled + '%';
+        });
+
+        // Animation smooth scroll pour la navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
