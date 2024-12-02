@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction au Contrôle de Version</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --text: #2c3e50;
+            --bg: #f5f6fa;
+            --card-bg: #ffffff;
+            --accent: #e74c3c;
+            --code-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        header {
+            background: linear-gradient(135deg, #24292e 0%, #1a1e22 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .content-card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .example-box {
+            background: var(--code-bg);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            margin-left: 2rem;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--code-bg);
+        }
+
+        .quiz-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-options label {
+            display: block;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--code-bg);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-options label:hover {
+            background: #e9ecef;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 1rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background: #27ae60;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fab fa-git"></i> Introduction au Contrôle de Version</h1>
+        <p>Comprendre les fondamentaux du versioning et de Git</p>
+    </header>
+
+    <div class="container">
+        <section class="content-card">
+            <h2><i class="fas fa-question-circle"></i> Qu'est-ce que le contrôle de version ?</h2>
+            <p>Le contrôle de version est un système qui enregistre les modifications apportées à un fichier ou un ensemble de fichiers au fil du temps, permettant ainsi de rappeler des versions spécifiques ultérieurement.</p>
+            
+            <div class="example-box">
+                <p>Imaginez un document partagé où chaque modification est enregistrée avec :</p>
+                <ul>
+                    <li>Qui a fait la modification</li>
+                    <li>Quand la modification a été faite</li>
+                    <li>Pourquoi la modification a été faite</li>
+                    <li>La possibilité de revenir à n'importe quelle version précédente</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <h2><i class="fas fa-history"></i> Évolution des systèmes de contrôle de version</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Contrôle de version local</h3>
+                    <p>Copie simple de fichiers dans différents répertoires, méthode basique mais sujette aux erreurs.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Systèmes centralisés (CVS, SVN)</h3>
+                    <p>Un serveur central contient tous les fichiers versionnés, et des clients qui récupèrent les fichiers depuis ce serveur.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Systèmes distribués (Git)</h3>
+                    <p>Chaque client possède une copie complète du dépôt, permettant une meilleure collaboration et sécurité.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-card">
+            <h2><i class="fas fa-check-double"></i> Avantages du contrôle de version</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sans contrôle de version</th>
+                            <th>Avec contrôle de version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Difficile de savoir qui a modifié quoi</td>
+                            <td>Historique détaillé des modifications</td>
+                        </tr>
+                        <tr>
+                            <td>Impossible de revenir en arrière facilement</td>
+                            <td>Retour possible à n'importe quelle version</td>
+                        </tr>
+                        <tr>
+                            <td>Collaboration complexe</td>
+                            <td>Travail en équipe facilité</td>
+                        </tr>
+                        <tr>
+                            <td>Risque de perte de données</td>
+                            <td>Sauvegarde et sécurité intégrées</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="quiz" class="quiz-section">
+            <h2><i class="fas fa-tasks"></i> Quiz rapide</h2>
+            <div class="quiz-question">
+                <p>Quel est l'avantage principal d'un système de contrôle de version distribué comme Git ?</p>
+                <div class="quiz-options">
+                    <label>
+                        <input type="radio" name="q1" value="a">
+                        Nécessite une connexion internet permanente
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="b">
+                        Chaque client a une copie complète du dépôt
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="c">
+                        Limite le nombre de collaborateurs possibles
+                    </label>
+                </div>
+                <div id="feedback" class="feedback hidden"></div>
+                <button class="btn" onclick="checkAnswer()">Vérifier la réponse</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.querySelector('input[name="q1"]:checked');
+            const feedback = document.getElementById('feedback');
+            
+            feedback.classList.remove('hidden');
+            
+            if (!answer) {
+                feedback.textContent = "Veuillez sélectionner une réponse.";
+                feedback.className = 'feedback incorrect';
+                return;
+            }
+            
+            if (answer.value === 'b') {
+                feedback.textContent = "Correct ! Les systèmes distribués comme Git permettent à chaque utilisateur d'avoir une copie complète du dépôt.";
+                feedback.className = 'feedback correct';
+            } else {
+                feedback.textContent = "Incorrect. La bonne réponse est que chaque client a une copie complète du dépôt.";
+                feedback.className = 'feedback incorrect';
+            }
+        }
+
+        // Animation au scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.content-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
